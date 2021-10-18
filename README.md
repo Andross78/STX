@@ -1,9 +1,9 @@
 # STX
 
+App is hosted on heroku : https://vast-cove-96774.herokuapp.com/
+
 For running this projects you have to clone this repo:
 git clone https://github.com/Andross78/STX.git
-
-App is hosted on heroku : https://vast-cove-96774.herokuapp.com/
 
 install all modules:
 pip install -r req.txt
