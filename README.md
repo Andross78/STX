@@ -13,6 +13,6 @@ flask run
 
 Views:
 
-1. '/' All books listing
+1. '/' All books listing, button 'Import' gets all books from google api, and saves them in DB.
 2. '/book_details' Create or update book (depends on session['oper_type'])
 3. '/api_books' Get all books api with filters in query string: ('title', 'author', 'lang', 'publish_date') and 'value'. If fiter == 'publish_date', adding 'second_value' in query string is obligatory.
