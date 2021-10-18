@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-light justify-content-start">
+        <a class="navbar-brand mr-5 d-block col-5" href="/">
+            <img src="../static/img/logo.png" width="80" height="80" alt="Logo">
+        </a>
+    </nav>
+    <div class="add__book px-4 mt-5">
+        <form method="POST">
+            {% for msg in get_flashed_messages() %}
+                <div style="color: red">{{ msg }}</div>
+            {% endfor %}
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Title</label>
+                {{ form.title }}
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Author</label>
+                {{ form.author }}
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Publish date</label>
+                {{ form.publish_date }}
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Isbn number</label>
+                {{ form.isbn }}
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Page count</label>
+                {{ form.pages_count }}
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Preview link</label>
+                {{ form.preview_link }}
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Language</label>
+                {{ form.lang }}
+            </div>
+            <button class="btn btn-warning mx-auto d-block mb-4" type="submit" name="book_save">Save book</button>
+    </div>
+    </form>
+</div>
+</div>
+</body>
+</html>
