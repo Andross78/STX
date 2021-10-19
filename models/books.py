@@ -53,6 +53,19 @@ class Book(db.Model):
         return book
 
 
+    def delete_book(self, book_id):
+
+        book = Book.query.filter_by(id=book_id).first()
+
+        try:
+            db.session.delete(book)
+            db.session.commit()
+        except Exception:
+            print(traceback.print_exc())
+
+        return -1
+
+
     def prepare_form(self, book, form):
 
         form.title.data = book.title
