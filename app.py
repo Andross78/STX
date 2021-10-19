@@ -40,6 +40,7 @@ def index():
 
     session['book_id'] = 0
     books = Book.query.order_by(Book.id).all()
+    print(books)
     form = BookFrm(request.form)
 
     if request.method == 'POST':
@@ -83,6 +84,10 @@ def index():
 
             return redirect('/book_details')
 
+        if 'book_delete' in data:
+            Book.delete_book(Book(), data['book_delete'])
+
+
         if 'filter_submit' in data:
             value = data['filter_input']
             book_filter = data['filter_type']
@@ -115,10 +120,7 @@ def book_details():
     2 = Edit book
     '''
 
-
     title = 'New book'
-    valid_error = False
-
     form = BookFrm(request.form)
 
     dic_lang = DicLang.query.all()
