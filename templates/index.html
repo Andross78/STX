@@ -10,10 +10,10 @@
 <body>
 <div class="container mt-5">
     <form method="POST" action="/">
-    <nav class="navbar navbar-light justify-content-start">
-        <a class="navbar-brand mr-5 d-block col-1" href="/">
-            <img src="../static/img/logo.png" width="80" height="80" alt="Logo">
-        </a>
+        <nav class="navbar navbar-light justify-content-start">
+            <a class="navbar-brand mr-5 d-block col-1" href="/">
+                <img src="../static/img/logo.png" width="80" height="80" alt="Logo">
+            </a>
             <div class="col-8">
                 <h4>Books filter</h4>
                 <select class="btn btn-outline-dark mr-3" id="filter_type" name="filter_type">
@@ -27,44 +27,49 @@
                 <button class="btn btn-warning" type="submit" name="filter_submit">Find book</button>
             </div>
             <div class="col-2">
-                 <h4 class="d-block long__title">Import from Google or add manually</h4>
+                <h4 class="d-block long__title">Import from Google or add manually</h4>
                 <button class="btn btn-outline-success" type="submit" method="POST" name="google_import">Import</button>
                 {% for msg in get_flashed_messages() %}
                     <div style="color: red">{{ msg }}</div>
                 {% endfor %}
                 <a class="btn btn-outline-success" href="/book_details">Add</a>
             </div>
-    </nav>
-    <div>
+        </nav>
+        <div>
 
             <div class="row">
                 {% for book in books %}
-                <div class="col-sm-4">
-                    <div class="card my-3">
-                        <form method="POST">
-                            <button type="submit" method="POST" class="btn btn-warning" name="book_id"
-                                    value="{{ book.id }}">{{ book.id }}</button>
-                        </form>
-                        <div class="card-body">
-                            <h3 class="card-title">{{ book.title }}</h3>
-                            <h4 class="card-text">Author: {{ book.author }}</h4>
-                            <p class="card-text">Publish date: {{ book.publish_date }}</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">ISBN: {{ book.ISBN_num }}</li>
-                            <li class="list-group-item">Pages count: {{ book.pages_count }}</li>
-                            <li class="list-group-item">Language: {{ book.lang }}</li>
-                        </ul>
-                        <div class="card-body">
-                            <p>Preview link: <a href="#" class="btn btn-primary d-block">{{ book.preview_link }}</a></p>
+                    <div class="col-sm-4">
+                        <div class="card my-3">
+                            <form method="POST">
+                                <button type="submit" method="POST" class="btn btn-warning" name="book_id"
+                                        value="{{ book.id }}">{{ book.id }}</button>
+                            </form>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ book.title }}</h3>
+                                <h4 class="card-text">Author: {{ book.author }}</h4>
+                                <p class="card-text">Publish date: {{ book.publish_date }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ISBN: {{ book.ISBN_num }}</li>
+                                <li class="list-group-item">Pages count: {{ book.pages_count }}</li>
+                                <li class="list-group-item">Language: {{ book.lang }}</li>
+                            </ul>
+                            <div class="card-body">
+                                <button class="btn btn-danger" value="{{ book.id }}" name="book_delete">Delete</button>
+                            </div>
+                            <div class="card-body">
+                                <p>Preview link: <a href="#" class="btn btn-primary d-block">{{ book.preview_link }}</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
+        </div>
     </form>
-</div>
 
-<script type="text/javascript" src="static/js/index.js"></script>
+
+    <script type="text/javascript" src="static/js/index.js"></script>
 </body>
 </html>
